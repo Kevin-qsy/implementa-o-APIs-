@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Piada Aleatória</title>
+<style>
+ body {
+   font-family: Arial, sans-serif;
+   text-align: center;
+   padding: 40px;
+   background-color: #f0f0f0;}
+ button {
+  padding: 10px 20px;
+  font-size: 16px;
+  margin-top: 20px;
+  cursor: pointer;}
+#setup {
+  font-weight: bold;
+  margin-top: 20px; }
+#punchline {
+ margin-top: 10px;
+ font-style: italic;
+}
+</style>
+</head>
+<body>
+
+<h1>Piada Aleatória</h1>
+<div id="setup">Clique e veja uma piada</div>
+ <div id="punchline"></div>
+ <button onclick="buscarpiada()">Nova piada</button>
+
+ <script>
+   async function buscarpiada() {
+    const resposta = await fetch('https://official-joke-api.appspot.com/random_joke');
+    const piada = await resposta.json();
+      document.getElementById('setup').innerText = piada.setup;
+      document.getElementById('punchline').innerText = piada.punchline; }
+  </script>
+
+</body>
+</html>
